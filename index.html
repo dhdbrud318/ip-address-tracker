@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | IP Address Tracker</title>
+
+    <!-- axios request -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Leaflet imported -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+      crossorigin=""
+    ></script>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="primary-header flex">
+      <h1 class="text-white fs-lg fw-500">IP Address Tracker</h1>
+      <div class="search-area container flex">
+        <input
+          type="text"
+          class="search-bar border-radius bg-white"
+          placeholder="Search for any IP address or domain IP Address Location"
+          maxlength="25"
+        />
+        <button class="search-btn bg-dark">
+          <img src="images/icon-arrow.svg" alt="Search" />
+        </button>
+      </div>
+
+      <div class="search-result container flex border-radius bg-white">
+        <div class="search-box flex">
+          <div class="search-text flow">
+            <h2 class="text-gray uppercase fs-xs fw-700">ip address</h2>
+            <p class="search-info fs-md text-dark fw-500" id="ipAddress">N/A</p>
+          </div>
+          <div class="search-border"></div>
+        </div>
+        <div class="search-box flex">
+          <div class="search-text flow">
+            <h2 class="text-gray uppercase fs-xs fw-700">location</h2>
+            <p class="search-info fs-md text-dark fw-500" id="location">USA</p>
+          </div>
+          <div class="search-border"></div>
+        </div>
+        <div class="search-box flex">
+          <div class="search-text flow">
+            <h2 class="text-gray uppercase fs-xs fw-700">timezone</h2>
+            <p class="search-info fs-md text-dark fw-500" id="timezone">
+              UTC-00:00
+            </p>
+          </div>
+          <div class="search-border"></div>
+        </div>
+
+        <div class="search-box flex">
+          <div class="search-text flow">
+            <h2 class="text-gray uppercase fs-xs fw-700">isp</h2>
+            <p class="search-info fs-md text-dark fw-500" id="isp">N/A</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="map"></div>
+    </main>
+
+    <section class="overlay bg-overlay flex">
+      <form
+        action=""
+        class="overlay__modal container flex bg-white border-radius"
+      >
+        <div class="overlay__modal-header uppercase bg-gradient">
+          <h2 class="text-white fs-md fw-500">Error</h2>
+        </div>
+        <div class="overlay__modal-content flow">
+          <p class="text-dark fs-sm" id="error-msg">error messages</p>
+          <button
+            type="submit"
+            class="overlay__btn uppercase bg-dark text-white fs-sm fw-500 border-radius"
+          >
+            ok
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>

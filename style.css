@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-dark-gray: 0, 0%, 17%;
+  --clr-dark-hover: 0, 0%, 25%;
+  --clr-gray: 0, 0%, 59%;
+  --clr-white: 0, 0%, 100%;
+  --clr-purple: 244 42% 43%;
+  --clr-light-purple: 244 83% 66%;
+
+  --fw-700: 700;
+  --fw-400: 400;
+  --fw-500: 500;
+
+  --fs-lg: 2rem;
+  --fs-md: clamp(1.25rem, 2vw, 1.5rem);
+  --fs-sm: 1.125rem;
+  --fs-xs: 0.75rem;
+
+  --bg-white: 0, 0%, 100%;
+  --bg-dark: 0, 0%, 17%;
+
+  --border-radius: 0.938rem;
+
+  /* placeholder for the search input */
+  --placeholder: "Search for any IP address or domain IP Address Location";
+}
+
+@media (max-width: 45rem) {
+  :root {
+    --fs-lg: 1.625rem;
+    --fs-xs: 0.625rem;
+  }
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: var(--fs-sm);
+  min-height: 100vh;
+  background: transparent;
+
+  position: relative;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+input,
+button,
+textarea {
+  all: unset;
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* remove animation for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after,
+  *::before {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility classes */
+
+/* font-size */
+.fs-lg {
+  font-size: var(--fs-lg);
+}
+
+.fs-md {
+  font-size: var(--fs-md);
+}
+
+.fs-sm {
+  font-size: var(--fs-sm);
+}
+
+.fs-xs {
+  font-size: var(--fs-xs);
+}
+
+/* font-weight */
+.fw-700 {
+  font-weight: var(--fw-700);
+}
+
+.fw-500 {
+  font-weight: var(--fw-500);
+}
+
+.fw-400 {
+  font-weight: var(--fw-400);
+}
+
+/* font-color */
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-dark {
+  color: hsl(var(--clr-dark-gray));
+}
+
+.text-gray {
+  color: hsl(var(--clr-gray));
+}
+
+.text-dark-translucent {
+  color: hsl(var(--clr-dark-gray) / 0.5);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* background color */
+.bg-dark {
+  background-color: hsl(var(--clr-dark-gray));
+}
+
+.bg-white {
+  background-color: hsl(var(--clr-white));
+}
+
+.bg-gray {
+  background-color: hsl(var(--clr-gray));
+}
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.bg-gradient {
+  background: linear-gradient(
+    45deg,
+    hsl(var(--clr-purple)),
+    hsl(var(--clr-light-purple))
+  );
+}
+
+/* alignment */
+.flex {
+  display: flex;
+  gap: (var(--gap), 2rem);
+}
+
+.grid {
+  display: grid;
+  gap: (var(--grid-gap), 2rem);
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 2rem);
+}
+
+.d-block {
+  display: block;
+}
+
+.border-radius {
+  border-radius: var(--border-radius);
+}
+
+/* components */
+.primary-header {
+  flex-direction: column;
+  padding: 2rem 0;
+  min-height: 17.5rem;
+  align-items: center;
+
+  background-image: url(images/pattern-bg.png);
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+
+  position: relative;
+}
+
+@media (max-width: 45em) {
+  .primary-header {
+    min-height: 18.75rem;
+  }
+}
+
+.search-area {
+  margin-top: 1.875rem;
+  position: relative;
+  width: fit-content;
+}
+
+.search-bar {
+  width: clamp(60ch, 2.5vw, 34.688rem);
+  width: 34.688rem;
+  max-width: 100%;
+  padding: 1em var(--search-padding, 1.5rem);
+}
+
+.search-bar::placeholder {
+  color: hsl(var(--clr-dark-gray));
+  opacity: 0.5;
+  text-align: left;
+}
+
+.search-btn {
+  padding: 1em var(--search-padding, 1.5rem);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+
+  position: absolute;
+  inset: 0 0 0 auto;
+  transition: background-color ease-in-out 0.2s;
+}
+
+.search-btn:hover {
+  background-color: hsl(var(--clr-dark-hover));
+}
+
+.search-result {
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  z-index: 1000;
+  transform: translate(50%, -50%);
+  padding: 2em clamp(1rem, 5vw, 2rem);
+  box-shadow: 0 1em 2em 0.25em rgba(0, 0, 0, 0.09);
+}
+
+@media (max-width: 45em) {
+  .search-result {
+    flex-direction: column;
+    padding: 1.5rem;
+    transform: translate(50%, -40%);
+  }
+
+  .search-box + .search-box {
+    margin-top: 1.5rem;
+  }
+}
+
+.search-text {
+  --flow-space: 0.75rem;
+  width: 13.313rem;
+  max-width: 100%;
+
+  text-align: left;
+}
+
+.search-info {
+  overflow-wrap: break-word;
+}
+
+.search-border {
+  margin: var(--gap, 2rem);
+  width: 1px;
+  height: 90%;
+  align-self: center;
+  background-color: hsl(var(--clr-gray));
+  border-radius: 100rem;
+}
+
+#map {
+  height: calc(100vh - 17.5rem);
+  width: 100vw;
+}
+
+@media (max-width: 73em) {
+  .search-text {
+    width: clamp(8rem, 18vw, 13.313rem);
+  }
+
+  .search-border {
+    margin: 0 clamp(1rem, 2vw, var(--gap, 2rem));
+  }
+}
+
+@media (max-width: 45em) {
+  .container {
+    width: 90vw;
+    max-width: 100%;
+  }
+
+  .search-box {
+    place-content: center;
+  }
+
+  .search-text {
+    --flow-space: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .search-border {
+    display: none;
+  }
+
+  #map {
+    height: calc(100vh - 18.75rem);
+  }
+}
+
+/* overlay */
+.overlay {
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+
+  position: absolute;
+  inset: 0;
+  z-index: 2000;
+  place-items: center;
+  place-content: center;
+}
+
+.overlay.active {
+  opacity: 1;
+  height: auto;
+}
+
+.overlay__modal {
+  flex-direction: column;
+  text-align: center;
+  width: clamp(30rem, 20vw, 35rem);
+  overflow: hidden;
+}
+
+.overlay__modal {
+  --flow-space: 1.5rem;
+}
+
+.overlay__modal > * {
+  width: 100%;
+  padding: clamp(1.25rem, 5vw, 2rem);
+}
+
+.overlay__modal-content {
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.overlay__btn {
+  width: min-content;
+  padding: 0.75em 1.75em;
+  transition: background-color ease-in-out 0.2s;
+}
+
+.overlay__btn:hover {
+  background-color: hsl(var(--clr-dark-hover));
+}
+
+@media (max-width: 35em) {
+  .overlay .container {
+    width: 90vw;
+    max-width: 100%;
+  }
+
+  .overlay__btn {
+    padding: 0.5em 1.75em;
+  }
+}
